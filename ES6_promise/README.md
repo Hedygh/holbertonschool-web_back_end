@@ -1,14 +1,14 @@
-(# ES6 Promises)
+# ES6 Promises
 
-(## Overview)
+## Overview
 
 This project introduces asynchronous programming in modern JavaScript using ES6 Promises.
 
 Until now, most JavaScript code in previous projects was synchronous:
 
-(- instructions executed immediately)
-(- values were available instantly)
-(- functions returned direct results)
+- instructions executed immediately
+- values were available instantly
+- functions returned direct results
 
 Promises change this model completely.
 
@@ -18,213 +18,213 @@ a value that will exist later.
 
 This project teaches how JavaScript handles asynchronous operations such as:
 
-(- API requests)
-(- file reading)
-(- database communication)
-(- uploads/downloads)
-(- timers and delayed operations)
+- API requests
+- file reading
+- database communication
+- uploads/downloads
+- timers and delayed operations
 
 The project also introduces the modern async/await syntax used in professional JavaScript applications.
 
-(---)
+---
 
-(# What We Learned)
+# What We Learned
 
-(## 1. What a Promise Is)
+## 1. What a Promise Is
 
 A Promise represents the future result of an asynchronous operation.
 
 A Promise can exist in 3 states:
 
-(- Pending)
+- Pending
 The operation is still running.
 
-(- Fulfilled)
+- Fulfilled
 The operation succeeded.
 
-(- Rejected)
+- Rejected
 The operation failed.
 
 Main idea:
 
 A Promise is a placeholder for a future value.
 
-(---)
+---
 
-(## 2. Creating a Promise)
+## 2. Creating a Promise
 
 Promises are created using:
 
-(```js
-new Promise((resolve, reject) => {
+```js
+new Promiseresolve, reject => {
 ...
-});
+};
 
 
 The Promise constructor provides two important functions:
 
-(- `resolve`)
+- `resolve`
 used when the operation succeeds
 
-(- `reject`)
+- `reject`
 used when the operation fails
 
 Example:
 
-(```js
-new Promise((resolve, reject) => {
-  resolve('Success');
-});
-```)
+```js
+new Promiseresolve, reject => {
+  resolve'Success';
+};
+```
 
-(---)
+---
 
-(## 3. Resolving a Promise)
+## 3. Resolving a Promise
 
 A Promise is resolved using:
 
-(```js
-resolve(value);
-```)
+```js
+resolvevalue;
+```
 
 This changes the Promise state from:
 
-(```txt
+```txt
 pending → fulfilled
-```)
+```
 
 Example:
 
-(```js
-resolve({
+```js
+resolve{
   status: 200,
   body: 'Success',
-});
-```)
+};
+```
 
-(---)
+---
 
-(## 4. Rejecting a Promise)
+## 4. Rejecting a Promise
 
 A Promise is rejected using:
 
-(```js
-reject(new Error('message'));
-```)
+```js
+rejectnew Error'message';
+```
 
 This changes the Promise state from:
 
-(```txt
+```txt
 pending → rejected
-```)
+```
 
 Example:
 
-(```js
-reject(new Error('API Error'));
-```)
+```js
+rejectnew Error'API Error';
+```
 
-(---)
+---
 
-(## 5. `then()`)
+## 5. `then`
 
-`then()` handles successful Promises.
+`then` handles successful Promises.
 
 Example:
 
-(```js
-promise.then((result) => {
-  console.log(result);
-});
-```)
+```js
+promise.thenresult => {
+  console.logresult;
+};
+```
 
 Main idea:
 
 > "If the Promise succeeds, do this."
 
-(---)
+---
 
-(## 6. `catch()`)
+## 6. `catch`
 
-`catch()` handles Promise failures.
+`catch` handles Promise failures.
 
 Example:
 
-(```js
-promise.catch((error) => {
-  console.log(error);
-});
-```)
+```js
+promise.catcherror => {
+  console.logerror;
+};
+```
 
 Main idea:
 
 > "If the Promise fails, handle the error."
 
-(---)
+---
 
-(## 7. `finally()`)
+## 7. `finally`
 
-`finally()` always executes, regardless of success or failure.
+`finally` always executes, regardless of success or failure.
 
 Example:
 
-(```js
-promise.finally(() => {
-  console.log('Done');
-});
-```)
+```js
+promise.finally => {
+  console.log'Done';
+};
+```
 
 Main idea:
 
 > some actions must always happen.
 
-(---)
+---
 
-(## 8. `Promise.resolve()`)
+## 8. `Promise.resolve`
 
 Creates an already successful Promise.
 
 Example:
 
-(```js
-Promise.resolve('Success');
-```)
+```js
+Promise.resolve'Success';
+```
 
 Useful when:
 
-(- immediately returning async values)
-(- mocking APIs)
-(- simplifying code)
+- immediately returning async values
+- mocking APIs
+- simplifying code
 
-(---)
+---
 
-(## 9. `Promise.reject()`)
+## 9. `Promise.reject`
 
 Creates an already failed Promise.
 
 Example:
 
-(```js
-Promise.reject(new Error('Failure'));
-```)
+```js
+Promise.rejectnew Error'Failure';
+```
 
 Useful for:
 
-(- manual error creation)
-(- testing failures)
-(- simplified rejection logic)
+- manual error creation
+- testing failures
+- simplified rejection logic
 
-(---)
+---
 
-(## 10. `Promise.all()`)
+## 10. `Promise.all`
 
 Waits for all Promises to succeed.
 
 Example:
 
-(```js
-Promise.all([promise1, promise2]);
-```)
+```js
+Promise.all[promise1, promise2];
+```
 
 Main idea:
 
@@ -234,45 +234,45 @@ If one Promise fails, the entire Promise fails.
 
 Useful for:
 
-(- parallel requests)
-(- loading multiple resources)
-(- profile creation flows)
+- parallel requests
+- loading multiple resources
+- profile creation flows
 
-(---)
+---
 
-(## 11. `Promise.allSettled()`)
+## 11. `Promise.allSettled`
 
 Waits for all Promises to finish, whether they succeed or fail.
 
 Example:
 
-(```js
-Promise.allSettled([promise1, promise2]);
-```)
+```js
+Promise.allSettled[promise1, promise2];
+```
 
 Main idea:
 
 > observe every Promise result individually.
 
-Unlike `Promise.all()`, failures do not stop execution.
+Unlike `Promise.all`, failures do not stop execution.
 
 Useful for:
 
-(- batch processing)
-(- reporting results)
-(- collecting all statuses)
+- batch processing
+- reporting results
+- collecting all statuses
 
-(---)
+---
 
-(## 12. `Promise.race()`)
+## 12. `Promise.race`
 
 Returns the first Promise that finishes.
 
 Example:
 
-(```js
-Promise.race([promise1, promise2]);
-```)
+```js
+Promise.race[promise1, promise2];
+```
 
 Main idea:
 
@@ -280,96 +280,96 @@ Main idea:
 
 Useful for:
 
-(- load balancing)
-(- timeouts)
-(- selecting fastest servers)
+- load balancing
+- timeouts
+- selecting fastest servers
 
-(---)
+---
 
-(## 13. Throwing Errors)
+## 13. Throwing Errors
 
 JavaScript errors can be created manually using:
 
-(```js
-throw new Error('message');
-```)
+```js
+throw new Error'message';
+```
 
 This immediately stops execution.
 
 Used for:
 
-(- invalid arguments)
-(- forbidden operations)
-(- validation)
+- invalid arguments
+- forbidden operations
+- validation
 
 Example:
 
-(```js
-if (denominator === 0) {
-  throw new Error('cannot divide by 0');
+```js
+if denominator === 0 {
+  throw new Error'cannot divide by 0';
 }
-```)
+```
 
-(---)
+---
 
-(## 14. `try / catch / finally`)
+## 14. `try / catch / finally`
 
 These blocks handle synchronous errors safely.
 
 Structure:
 
-(```js
+```js
 try {
   ...
-} catch (error) {
+} catch error {
   ...
 } finally {
   ...
 }
-```)
+```
 
 Roles:
 
-(- `try`)
+- `try`
 attempt risky code
 
-(- `catch`)
+- `catch`
 handle errors
 
-(- `finally`)
+- `finally`
 always execute cleanup logic
 
 Main idea:
 
 > code should fail safely.
 
-(---)
+---
 
-(## 15. `async` Functions)
+## 15. `async` Functions
 
 Functions declared with `async` automatically return Promises.
 
 Example:
 
-(```js
-async function test() {}
-```)
+```js
+async function test {}
+```
 
 Main idea:
 
 `async` allows modern asynchronous syntax.
 
-(---)
+---
 
-(## 16. `await`)
+## 16. `await`
 
 `await` pauses execution until a Promise finishes.
 
 Example:
 
-(```js
+```js
 const result = await promise;
-```)
+```
 
 Main idea:
 
@@ -377,54 +377,54 @@ Main idea:
 
 This makes async code look synchronous.
 
-(---)
+---
 
-(## 17. `async / await` + `try/catch`)
+## 17. `async / await` + `try/catch`
 
 Modern JavaScript combines:
 
-(- `async`)
-(- `await`)
-(- `try/catch`)
+- `async`
+- `await`
+- `try/catch`
 
 to write clean asynchronous logic.
 
 Example:
 
-(```js
-async function example() {
+```js
+async function example {
   try {
-    const result = await fetchData();
+    const result = await fetchData;
     return result;
-  } catch (error) {
+  } catch error {
     return null;
   }
 }
-```)
+```
 
 This is now the standard way to handle asynchronous code in JavaScript.
 
-(---)
+---
 
-(# Key Takeaways)
+# Key Takeaways
 
 By the end of this project, the most important concepts learned were:
 
-(- Promises represent future values)
-(- asynchronous operations can succeed or fail)
-(- `resolve` handles success)
-(- `reject` handles failure)
-(- `then`, `catch`, and `finally` manage Promise flows)
-(- `Promise.all` waits for all successes)
-(- `Promise.allSettled` observes all results)
-(- `Promise.race` selects the fastest Promise)
-(- `throw` creates manual errors)
-(- `try/catch/finally` safely handles failures)
-(- `async/await` simplifies asynchronous programming)
+- Promises represent future values
+- asynchronous operations can succeed or fail
+- `resolve` handles success
+- `reject` handles failure
+- `then`, `catch`, and `finally` manage Promise flows
+- `Promise.all` waits for all successes
+- `Promise.allSettled` observes all results
+- `Promise.race` selects the fastest Promise
+- `throw` creates manual errors
+- `try/catch/finally` safely handles failures
+- `async/await` simplifies asynchronous programming
 
-(---)
+---
 
-(# Final Thought)
+# Final Thought
 
 Promises are one of the most important concepts in modern JavaScript.
 
@@ -432,11 +432,11 @@ Almost every real-world JavaScript application uses asynchronous operations cons
 
 This project teaches the foundation of:
 
-(- API communication)
-(- backend requests)
-(- uploads/downloads)
-(- async frontend interactions)
-(- modern server logic)
+- API communication
+- backend requests
+- uploads/downloads
+- async frontend interactions
+- modern server logic
 
 Understanding Promises is essential before moving into advanced backend development, APIs, React, Node.js, databases, and real-world asynchronous systems.
 :::
