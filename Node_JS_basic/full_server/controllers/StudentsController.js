@@ -13,7 +13,10 @@ export default class StudentsController {
           .forEach((field) => {
             const count = fields[field].length;
             const list = fields[field].join(', ');
-            const message = `Number of students in ${field}: ${count}. List: ${list}`;
+            const message = [
+              `Number of students in ${field}: ${count}.`,
+              `List: ${list}`,
+            ].join(' ');
 
             output.push(message);
           });
