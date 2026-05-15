@@ -30,9 +30,10 @@ function countStudents(path) {
       const output = [`Number of students: ${students.length}`];
 
       Object.keys(fields).forEach((field) => {
-        output.push(
-          `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`
-        );
+        const count = fields[field].length;
+        const list = fields[field].join(', ');
+
+        output.push(`Number of students in ${field}: ${count}. List: ${list}`);
       });
 
       resolve(output.join('\n'));
@@ -50,11 +51,11 @@ const app = http.createServer((req, res) => {
     countStudents(database)
       .then((studentsInfo) => {
         res.statusCode = 200;
-        res.end(`This is the list of our students\n${studentsInfo}`);
+        res.end('This is the list of our students\n' + studentsInfo);
       })
       .catch((error) => {
         res.statusCode = 500;
-        res.end(`This is the list of our students\n${error.message}`);
+        res.end('This is the list of our students\n' + error.message);
       });
   }
 });
