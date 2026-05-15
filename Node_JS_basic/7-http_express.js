@@ -31,9 +31,10 @@ function countStudents(path) {
       const output = [`Number of students: ${students.length}`];
 
       Object.keys(fields).forEach((field) => {
-        output.push(
-          `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`
-        );
+        const count = fields[field].length;
+        const list = fields[field].join(', ');
+
+        output.push(`Number of students in ${field}: ${count}. List: ${list}`);
       });
 
       resolve(output.join('\n'));
