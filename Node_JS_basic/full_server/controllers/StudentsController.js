@@ -11,9 +11,11 @@ export default class StudentsController {
         Object.keys(fields)
           .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
           .forEach((field) => {
-            output.push(
-              `Number of students in ${field}: ${fields[field].length}. List: ${fields[field].join(', ')}`
-            );
+            const count = fields[field].length;
+            const list = fields[field].join(', ');
+            const message = `Number of students in ${field}: ${count}. List: ${list}`;
+
+            output.push(message);
           });
 
         response.status(200).send(output.join('\n'));
@@ -35,7 +37,10 @@ export default class StudentsController {
 
     readDatabase(database)
       .then((fields) => {
-        response.status(200).send(`List: ${fields[major].join(', ')}`);
+        const list = fields[major].join(', ');
+        const message = `List: ${list}`;
+
+        response.status(200).send(message);
       })
       .catch(() => {
         response.status(500).send('Cannot load the database');
