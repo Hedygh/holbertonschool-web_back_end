@@ -10,7 +10,7 @@ function countStudents(path) {
   }
 
   const lines = data.split('\n').filter((line) => line.trim() !== '');
-  const students = lines.slice(1); // enlever l'en-tête
+  const students = lines.slice(1);
 
   console.log(`Number of students: ${students.length}`);
 
@@ -18,7 +18,6 @@ function countStudents(path) {
 
   students.forEach((line) => {
     const parts = line.split(',');
-
     const firstname = parts[0];
     const field = parts[3];
 
@@ -30,10 +29,10 @@ function countStudents(path) {
   });
 
   Object.keys(fields).forEach((field) => {
+    const count = fields[field].length;
     const list = fields[field].join(', ');
-    console.log(
-      `Number of students in ${field}: ${fields[field].length}. List: ${list}`
-    );
+
+    console.log(`Number of students in ${field}: ${count}. List: ${list}`);
   });
 }
 
